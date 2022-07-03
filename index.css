@@ -11,3 +11,6 @@
 ul {
   list-style: none;
 }
+#user-list>li{
+  border: 2px solid black;
+}
