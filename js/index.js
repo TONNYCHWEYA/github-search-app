@@ -25,8 +25,8 @@ function createLi(user){
   const li = document.createElement("li")
   li.innerHTML =`
   <p>User_Name: ${user.login}</p>
-  <p>Avatar_url: ${user.avatar_url}</p>
-  <p>Profile link: ${user.html_url}</p>
+  <img src="${user.avatar_url}"> 
+  <a href="${user.html_url}">Profile link</a>
   `
  li.addEventListener('click', (event) => {
    const githubName =user.login
@@ -36,8 +36,22 @@ function createLi(user){
   
 }
 
+const ulRepo = document.getElementById("repos-list")
 function getRepo(githubName){
   fetch(`https://api.github.com/users/${githubName}/repos`)
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => {
+   
+    data.forEach(repo => {
+      const li = document.createElement("li")
+      li.innerHTML=`
+      <h2>Repo Name: ${repo.full_name}</h2>
+      <a href="${repo.html_url}">To the Repo</a><br>
+      <a href="${repo.clone_url}">Clone the repo</a><br>
+      <a href="${repo.fork_url}">Fork the repo</a>
+      `
+      ulRepo.appendChild(li)
+      
+    })
+  })
 }

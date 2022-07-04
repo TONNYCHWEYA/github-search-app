@@ -13,4 +13,9 @@ ul {
 }
 #user-list>li{
   border: 2px solid black;
+  margin-bottom: 10px;
+}
+#repos-list>li{
+  border: 2px solid black;
+  margin-bottom: 10px;
 }
